@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CamFollowPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Transform fpsCam;
 
-    // Update is called once per frame
+    void Awake()
+    {
+        Camera.main.transform.position = fpsCam.position;
+    }
     void Update()
     {
-        
+        Camera.main.transform.position = fpsCam.position;
     }
 }
