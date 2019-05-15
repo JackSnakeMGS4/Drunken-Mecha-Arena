@@ -12,6 +12,7 @@ public class CamFollowPlayer : MonoBehaviour
     }
     void Update()
     {
-        Camera.main.transform.position = fpsCam.position;
+        Camera.main.transform.position = fpsCam.position + new Vector3(0,1.0f,10.0f);
+        Camera.main.transform.LookAt(fpsCam.position + new Vector3(0,0,-3.0f),Vector3.up);
     }
 }
