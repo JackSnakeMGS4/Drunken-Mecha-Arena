@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 804140657}
   - component: {fileID: 804140656}
   - component: {fileID: 804140660}
+  - component: {fileID: 804140661}
   m_Layer: 9
   m_Name: Aircraft_Player
   m_TagString: Player
@@ -2482,13 +2483,27 @@ MonoBehaviour:
   thrust: 2
   maxVel: 200
   ground: {fileID: 789529266}
+--- !u!114 &804140661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804140655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d32a4499ebef144b0e48271b4ac6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo1: {fileID: 0}
+  ammo2: {fileID: 0}
 --- !u!43 &927330346
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15864
+  m_Name: pb_Mesh15894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
