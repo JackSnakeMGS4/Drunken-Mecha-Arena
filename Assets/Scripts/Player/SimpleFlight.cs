@@ -43,6 +43,11 @@ public class SimpleFlight : MonoBehaviour
         }
         
         transform.Rotate( -Input.GetAxis("Vertical"), 0.0f, Input.GetAxis("Horizontal"));
+
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            Destroy(gameObject);
+        }
     }
 
     void ContainPlayerToArea()
