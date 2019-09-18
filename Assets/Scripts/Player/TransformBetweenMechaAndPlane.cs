@@ -6,6 +6,8 @@ public class TransformBetweenMechaAndPlane : MonoBehaviour
 {
     [SerializeField] private GameObject mecha;
     [SerializeField] private GameObject plane;
+    [SerializeField] private GameObject planeCam;
+    [SerializeField] private GameObject mechaCam;
 
     [HideInInspector] public bool isPlaneModeActive = false;
 
@@ -49,11 +51,15 @@ public class TransformBetweenMechaAndPlane : MonoBehaviour
         {
             plane.transform.position = gameObject.transform.position;
             plane.transform.rotation = gameObject.transform.rotation;
+            planeCam.SetActive(true);
+            mechaCam.SetActive(false);
         }
         else
         {
             mecha.transform.position = gameObject.transform.position;
             mecha.transform.rotation = gameObject.transform.rotation;
+            planeCam.SetActive(false);
+            mechaCam.SetActive(true);
         }
     }
 }
