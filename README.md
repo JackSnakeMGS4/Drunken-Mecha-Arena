@@ -1,4 +1,1 @@
-# Project-FTLoS
-For The Love of Sake revolves around the player choosing an militaristic or futuristic aircraft based off real planes or objects and fighting bosses. In addition, all aircrafts will have abilities unique to their design or stats for example:
-The F-15 will be among the fastest of all aircrafts both in plane mode and robot mode. In plane mode the F-15 will have the ability to divert power from other systems to temporarily gain an unlimited boost unique to it. However, in robot mode the F-15 will divert that power to exceed aircraft speed limits and essentially slow down time (Similar principle to how the Flash's, a DC comics superhero, power works).
-Schedule and all other important information such as the GDD and references (games, audio, art, etc.) are located in Trello board (https://trello.com/b/ZDl2zjjI). Let me know if you're interested in helping out with any aspect of this freeware game.
+
