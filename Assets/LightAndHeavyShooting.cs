@@ -14,7 +14,6 @@ public class LightAndHeavyShooting : MonoBehaviour
     [SerializeField] [Range(100.0f, 20.0f)] private float shotRange = 100.0f;
     private float timer;
 
-    [SerializeField] private Transform firePoint;
     [SerializeField] private ParticleSystem shotImpact;
     [SerializeField] private ParticleSystem muzzleFlash;
 
@@ -34,7 +33,10 @@ public class LightAndHeavyShooting : MonoBehaviour
 
     private void FireWeapon()
     {
-        Ray ray = new Ray(firePoint.position, firePoint.forward);
+        Ray ray = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+
+        Debug.DrawRay(ray.origin, ray.direction * shotRange, Color.red, 2.0f);
+
         RaycastHit hitInfo;
 
         muzzleFlash.Play();

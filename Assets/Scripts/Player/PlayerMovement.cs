@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
 
-    [SerializeField] private float moveSpeed = 1250;
-    [SerializeField] private float turnSpeed = 5;
+    [SerializeField] private float fowardMoveSpeed = 50.0f;
+    [SerializeField] private float turnSpeed = 100.0f;
+    [SerializeField] private float backwardMoveSpeed = 35.0f;
 
     private void Awake()
     {
@@ -25,16 +26,15 @@ public class PlayerMovement : MonoBehaviour
 
         var movement = new Vector3(horizontal, 0, vertical);
 
-        characterController.SimpleMove(movement * Time.deltaTime * moveSpeed);
+        //animator.SetFloat("Speed", vertical);
 
-        //NOTE 2: uncomment animator once you get your crude idle and running animations done in Blender
-        //animator.SetFloat("Speed", movement.magnitude);
+        transform.Rotate(Vector3.up, horizontal * turnSpeed * Time.deltaTime);
 
-        if(movement.magnitude > 0)
+        if(vertical != 0)
         {
-            Quaternion newDirection = Quaternion.LookRotation(movement);
+            float moveSpeedToUse = vertical > 0 ? fowardMoveSpeed : backwardMoveSpeed;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * turnSpeed);
+            characterController.SimpleMove(transform.forward * moveSpeedToUse * vertical);
         }
     }
 }
