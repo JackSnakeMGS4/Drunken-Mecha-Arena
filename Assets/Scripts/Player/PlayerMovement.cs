@@ -18,8 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
 
-        //NOTE 1: Refer to NOTE 2
-        //animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         //TODO: Make the following line toggable in game
         Cursor.lockState = CursorLockMode.Locked;
@@ -27,14 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //TODO: Implement strafing left and right 
         var horizontalRot = Input.GetAxis("Mouse X");
         var horizontalStrafe = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
 
         var movement = new Vector3(horizontalRot, 0, vertical);
 
-        //animator.SetFloat("Speed", vertical);
+        animator.SetFloat("Speed", vertical);
 
         transform.Rotate(Vector3.up, horizontalRot * turnSpeed * Time.deltaTime);
 
