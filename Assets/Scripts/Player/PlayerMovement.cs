@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float backwardMoveSpeed = 35.0f;
     [SerializeField] private float strafingRightMoveSpeed = 50.0f;
     [SerializeField] private float strafingLeftMoveSpeed = 50.0f;
+    [SerializeField] private float dashSpeed = 100.0f;
 
 
     private void Awake()
@@ -40,11 +42,21 @@ public class PlayerMovement : MonoBehaviour
         {
             float moveSpeedToUse = vertical > 0 ? fowardMoveSpeed : backwardMoveSpeed;
 
+            if(Input.GetButton("Dash"))
+            {
+                characterController.SimpleMove(transform.forward * (moveSpeedToUse * dashSpeed) * vertical);
+            }
+
             characterController.SimpleMove(transform.forward * moveSpeedToUse * vertical);
         }
         if(horizontalStrafe != 0)
         {
             float strafeSpeedToUse = horizontalStrafe > 0 ? strafingRightMoveSpeed : strafingLeftMoveSpeed;
+
+            if (Input.GetButton("Dash"))
+            {
+                characterController.SimpleMove(transform.right * (strafeSpeedToUse * dashSpeed) * horizontalStrafe);
+            }
 
             characterController.SimpleMove(transform.right * strafeSpeedToUse * horizontalStrafe);
         }
