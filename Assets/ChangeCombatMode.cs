@@ -24,7 +24,17 @@ public class ChangeCombatMode : MonoBehaviour
             ChangeMode();
         }
 
-        Debug.Log("Heavy Mode On? " + heavyModeOn);
+        if(heavyModeOn)
+        {
+            Debug.Log("Heavy configuration loaded. Melee module enabled; Shooting module disabled.");
+        }
+        else
+        {
+            Debug.Log("Light configuration loaded. Shooting module enabled; Melee module disabled.");
+        }
+
+
+        //Debug.Log("Heavy Mode On? " + heavyModeOn);
     }
 
     private void ChangeMode()

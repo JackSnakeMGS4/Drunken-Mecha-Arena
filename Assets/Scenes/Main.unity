@@ -959,7 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4936ea3adaff3824f99db88545606205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 100
+  startingHP: 200
+  defense: 100
 --- !u!135 &191650573
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3007,7 +3008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4936ea3adaff3824f99db88545606205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 100
+  startingHP: 200
+  defense: 100
 --- !u!114 &574686923
 MonoBehaviour:
   m_ObjectHideFlags: 0

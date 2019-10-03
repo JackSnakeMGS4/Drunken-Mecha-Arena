@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class LightAndHeavyShooting : MonoBehaviour
 {
-    //TODO: Increase fireRate to 5 if heavy mode is on and fire heavy shot
-    //TODO: Increase damage to 100 i heavy mode is on
-    //TODO: Decrease shot range to 20 if heavy mode is on
+    //TODO: Increase fireRate if light mode is on
+    //TODO: Increase damage if heavy mode is on
+    //TODO: Decrease shot range if heavy mode is on
     //TODO: Add shot landing VFX to container and delete each one after 2 seconds
     [SerializeField] [Range(0.25f, 5.0f)] private float fireRate = 1;
     [SerializeField] [Range(1, 100)] private int damage = 1;
