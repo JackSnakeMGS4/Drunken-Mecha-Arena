@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
                 characterController.SimpleMove(transform.forward * (moveSpeedToUse * dashSpeed) * vertical);
             }
 
+            //NOTE: Since this applies to the local transform, moving forward while the running animation plays causes the player
+            // sort of skate since transform.forward is rotated by the anim. Might be because I know little about animation and using them in Unity but IDK.
             characterController.SimpleMove(transform.forward * moveSpeedToUse * vertical);
         }
         if(horizontalStrafe != 0)

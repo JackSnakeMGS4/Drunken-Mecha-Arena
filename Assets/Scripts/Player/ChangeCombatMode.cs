@@ -10,6 +10,8 @@ public class ChangeCombatMode : MonoBehaviour
     [SerializeField] GameObject heavyModeVFX;
     [SerializeField] GameObject lightModeVFX;
 
+    public bool getHeavyModeStatus { get { return heavyModeOn; } }
+
     void Start()
     {
         heavyModeOn = false;

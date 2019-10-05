@@ -18,6 +18,6 @@ public class CameraController : MonoBehaviour
     {
         float vertical = Input.GetAxis("Mouse Y") * sensitivity;
         composer.m_TrackedObjectOffset.y += vertical;
-        composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, 21.0f, 28.0f);
+        composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, 4.0f, 7.0f);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class LightAndHeavyShooting : MonoBehaviour
 {
+    private Animator animator;
+    private ChangeCombatMode combatMode;
+
     //TODO: Increase fireRate if light mode is on
     //TODO: Increase damage if heavy mode is on
     //TODO: Decrease shot range if heavy mode is on
@@ -17,16 +20,28 @@ public class LightAndHeavyShooting : MonoBehaviour
     [SerializeField] private ParticleSystem shotImpact;
     [SerializeField] private ParticleSystem muzzleFlash;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+        combatMode = GetComponent<ChangeCombatMode>();
+    }
+
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer >= fireRate)
+        if(!combatMode.getHeavyModeStatus)
         {
-            if (Input.GetButton("Fire1"))
+            timer += Time.deltaTime;
+            if (timer >= fireRate)
             {
-                timer = 0f;
-                FireWeapon();
+                if (Input.GetButton("Fire1"))
+                {
+                    timer = 0f;
+                    FireWeapon();
+                }
+                else
+                {
+                    animator.SetBool("isShooting", false);
+                }
             }
         }
     }
@@ -40,6 +55,7 @@ public class LightAndHeavyShooting : MonoBehaviour
         RaycastHit hitInfo;
 
         muzzleFlash.Play();
+        animator.SetBool("isShooting", true);
 
         if (Physics.Raycast(ray, out hitInfo, shotRange))
         {
