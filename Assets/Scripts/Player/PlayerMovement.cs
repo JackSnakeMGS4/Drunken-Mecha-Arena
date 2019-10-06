@@ -38,20 +38,21 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Rotate(Vector3.up, horizontalRot * turnSpeed * Time.deltaTime);
 
-        if(vertical != 0)
+        if (vertical != 0)
         {
             float moveSpeedToUse = vertical > 0 ? fowardMoveSpeed : backwardMoveSpeed;
 
-            if(Input.GetButton("Dash"))
+            if (Input.GetButton("Dash"))
             {
                 characterController.SimpleMove(transform.forward * (moveSpeedToUse * dashSpeed) * vertical);
             }
 
             //NOTE: Since this applies to the local transform, moving forward while the running animation plays causes the player
             // sort of skate since transform.forward is rotated by the anim. Might be because I know little about animation and using them in Unity but IDK.
+            // It also affects the player's aim.
             characterController.SimpleMove(transform.forward * moveSpeedToUse * vertical);
         }
-        if(horizontalStrafe != 0)
+        if (horizontalStrafe != 0)
         {
             float strafeSpeedToUse = horizontalStrafe > 0 ? strafingRightMoveSpeed : strafingLeftMoveSpeed;
 

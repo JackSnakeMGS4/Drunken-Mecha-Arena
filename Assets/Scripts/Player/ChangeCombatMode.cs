@@ -21,12 +21,12 @@ public class ChangeCombatMode : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Transform"))
+        if (Input.GetButtonDown("Transform"))
         {
             ChangeMode();
         }
 
-        if(heavyModeOn)
+        if (heavyModeOn)
         {
             Debug.Log("Heavy configuration loaded. Melee module enabled; Shooting module disabled.");
         }

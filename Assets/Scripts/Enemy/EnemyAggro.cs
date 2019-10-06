@@ -11,7 +11,7 @@ public class EnemyAggro : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerMovement>();
-        if(player != null)
+        if (player != null)
         {
             Aggroed(player.transform);
             Debug.Log("Enemy Attacking");

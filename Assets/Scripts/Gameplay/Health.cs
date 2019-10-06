@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     {
         currentHP -= damageAmount;
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             Die();
         }

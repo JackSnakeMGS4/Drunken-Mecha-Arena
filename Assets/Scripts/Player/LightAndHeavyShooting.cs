@@ -28,7 +28,7 @@ public class LightAndHeavyShooting : MonoBehaviour
 
     void Update()
     {
-        if(!combatMode.getHeavyModeStatus)
+        if (!combatMode.getHeavyModeStatus)
         {
             timer += Time.deltaTime;
             if (timer >= fireRate)
@@ -60,20 +60,16 @@ public class LightAndHeavyShooting : MonoBehaviour
         int layerMask = 1 << 10;
         layerMask = ~layerMask;
 
-        if (Physics.Raycast(ray, out hitInfo, shotRange, layerMask))
+        if (Physics.Raycast(ray, out hitInfo, shotRange, layerMask, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log("Hitting something other than the player");
-            if (!hitInfo.collider.isTrigger)
-            {
-                Debug.Log("Hitting a non-trigger collider");
-                Instantiate(shotImpact, hitInfo.point, Quaternion.identity);
+            Instantiate(shotImpact, hitInfo.point, Quaternion.identity);
 
-                var health = hitInfo.collider.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
+            var health = hitInfo.collider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
             }
+
         }
     }
 }

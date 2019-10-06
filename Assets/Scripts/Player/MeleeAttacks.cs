@@ -8,8 +8,8 @@ public class MeleeAttacks : MonoBehaviour
     private ChangeCombatMode combatMode;
     private Animator animator;
 
-    [SerializeField] [Range(5.0f,20.0f)]  private int lightMeleeDamage = 5;
-    [SerializeField] [Range(5.0f,20.0f)]  private int heavyMeleeDamage = 20;
+    [SerializeField] [Range(5.0f, 20.0f)] private int lightMeleeDamage = 5;
+    [SerializeField] [Range(5.0f, 20.0f)] private int heavyMeleeDamage = 20;
     [SerializeField] private float lightMeleeRange = 60.0f;
     [SerializeField] private float heavyMeleeRange = 90.0f;
 
@@ -22,7 +22,7 @@ public class MeleeAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(combatMode.getHeavyModeStatus)
+        if (combatMode.getHeavyModeStatus)
         {
             //TODO: figure out a way to only execute the if statement when the light melee animation is done
             if (Input.GetButtonDown("Fire2"))
@@ -49,15 +49,12 @@ public class MeleeAttacks : MonoBehaviour
         int layerMask = 1 << 10;
         layerMask = ~layerMask;
 
-        if (Physics.Raycast(ray, out hitInfo, lightMeleeRange, layerMask))
+        if (Physics.Raycast(ray, out hitInfo, lightMeleeRange, layerMask, QueryTriggerInteraction.Ignore))
         {
-            if(!hitInfo.collider.isTrigger)
+            var health = hitInfo.collider.GetComponent<Health>();
+            if (health != null)
             {
-                var health = hitInfo.collider.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(lightMeleeDamage);
-                }
+                health.TakeDamage(lightMeleeDamage);
             }
         }
     }
