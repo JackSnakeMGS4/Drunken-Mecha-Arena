@@ -12,9 +12,9 @@ public class LightAndHeavyShooting : MonoBehaviour
     //TODO: Increase damage if heavy mode is on
     //TODO: Decrease shot range if heavy mode is on
     //TODO: Add shot landing VFX to container and delete each one after 2 seconds
-    [SerializeField] [Range(0.25f, 5.0f)] private float fireRate = 1;
+    [SerializeField] [Range(0.25f, 5.0f)] private float fireRate = 1.0f;
     [SerializeField] [Range(1, 100)] private int damage = 1;
-    [SerializeField] [Range(100.0f, 20.0f)] private float shotRange = 100.0f;
+    [SerializeField] [Range(100.0f, 300.0f)] private float shotRange = 300.0f;
     private float timer;
 
     [SerializeField] private ParticleSystem shotImpact;
@@ -57,15 +57,23 @@ public class LightAndHeavyShooting : MonoBehaviour
         muzzleFlash.Play();
         animator.SetBool("isShooting", true);
 
-        if (Physics.Raycast(ray, out hitInfo, shotRange))
-        {
-            var health = hitInfo.collider.GetComponent<Health>();
-            if(health != null)
-            {
-                health.TakeDamage(damage);
-            }
+        int layerMask = 1 << 10;
+        layerMask = ~layerMask;
 
-            Instantiate(shotImpact, hitInfo.point, Quaternion.identity);
+        if (Physics.Raycast(ray, out hitInfo, shotRange, layerMask))
+        {
+            Debug.Log("Hitting something other than the player");
+            if (!hitInfo.collider.isTrigger)
+            {
+                Debug.Log("Hitting a non-trigger collider");
+                Instantiate(shotImpact, hitInfo.point, Quaternion.identity);
+
+                var health = hitInfo.collider.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ public class EnemyLightAndHeavyShooting : MonoBehaviour
 {
     [SerializeField] [Range(0.25f, 5.0f)] private float shotRefreshRate = 1;
     [SerializeField] [Range(1, 100)] private int damageAmount = 1;
-    [SerializeField] [Range(100.0f, 20.0f)] private float shotRange = 100.0f;
+    [SerializeField] [Range(100.0f, 300.0f)] private float shotRange = 100.0f;
 
 
     private EnemyAggro aggroDetection;

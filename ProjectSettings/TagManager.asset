@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - Mecha
-  - Cameras
+  - Enemy
+  - Player
   - Ground
   - 
   - 
